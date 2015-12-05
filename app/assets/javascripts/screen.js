@@ -1,5 +1,13 @@
 
-function drawKeg(canvas, scale) {
+function drawKeg(canvas, level) {
+
+
+    canvas.scale(2,2);
+
+    //set style
+    canvas.lineWidth=4;
+    canvas.strokeStyle = "#DDDDDD";
+    canvas.beginPath();
     canvas.moveTo(10,10);
     canvas.lineTo(10,60);
     canvas.lineTo(5,65);
@@ -8,9 +16,10 @@ function drawKeg(canvas, scale) {
     canvas.lineTo(5,125);
     canvas.lineTo(10,130);
     canvas.lineTo(10,180);
-    canvas.lineTo(15,185);
-    canvas.lineTo(125,185);
-    canvas.lineTo(130,180);
+
+    //bottom
+    canvas.quadraticCurveTo(70,200,130,180);
+
     canvas.lineTo(130,130);
     canvas.lineTo(135,125);
     canvas.lineTo(130,120);
@@ -18,7 +27,30 @@ function drawKeg(canvas, scale) {
     canvas.lineTo(135,65);
     canvas.lineTo(130,60);
     canvas.lineTo(130,10);
+
+    //top
+    canvas.quadraticCurveTo(70,0,10,10);
+    canvas.closePath();
+    canvas.fillStyle = "#DDDDDD";
+    canvas.fill();
     canvas.stroke();
+
+    //cap
+    canvas.beginPath();
+    canvas.strokeStyle = "#445046";
+    canvas.moveTo(50,15);
+    canvas.quadraticCurveTo(70,12,90,15);
+    canvas.stroke();
+
+    //draw beer
+    canvas.beginPath();
+    canvas.fillStyle = "#FBB123";
+    canvas.moveTo(20,50);
+    canvas.lineTo(20,170);
+    canvas.quadraticCurveTo(70,190,120,170);
+    canvas.lineTo(120,50);
+    canvas.closePath();
+    canvas.fill();
 }
 
 
