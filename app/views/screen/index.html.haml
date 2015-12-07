@@ -1,14 +1,15 @@
-.col-md-10
+.col-md-9
+  .row.top-banner
+    .col-xs-4.left-hop
+    .col-xs-4.logo
+    .col-xs-4
   .row
-    .col-md-6
-      %p
-        beer1
-      %canvas{id: "beer1", width:400, height: 400}
-    .col-md-6
-      %p
-        beer2
-      %canvas{id: "beer2", width:400, height: 400}
-.col-md-2
+    .col-xs-6.beer
+      %canvas{id: "beer1", width: "200", height: "200"}
+    .col-xs-6.beer
+      %canvas{id: "beer2", width: "200", height: "200"}
+  .row.bottom-bar
+.col-md-3.sidebar
   .row
     %p
       sidebar

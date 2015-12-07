@@ -1,67 +1,131 @@
 
-function drawKeg(canvas, level) {
 
+var keg = {};
+keg.draw = function(canvas, level, width) {
+    //canvas.scale(2,2);
 
-    canvas.scale(2,2);
+    middle = width/2;
+    height = width - 30;
+    hsize = 60*(width/120) - 30;
 
     //set style
-    canvas.lineWidth=4;
-    canvas.strokeStyle = "#DDDDDD";
+    canvas.lineWidth=1;
+    canvas.strokeStyle = "#e1e1e1";
+
     canvas.beginPath();
-    canvas.moveTo(10,10);
-    canvas.lineTo(10,60);
-    canvas.lineTo(5,65);
-    canvas.lineTo(10,70);
-    canvas.lineTo(10,120);
-    canvas.lineTo(5,125);
-    canvas.lineTo(10,130);
-    canvas.lineTo(10,180);
+    canvas.moveTo(middle - hsize,10);
+    canvas.lineTo(middle - hsize,height/3);
+    canvas.lineTo(middle - hsize*1.1,height/3 + 5);
+    canvas.lineTo(middle - hsize,height/3 + 10);
+    canvas.lineTo(middle - hsize,2*height/3);
+    canvas.lineTo(middle - hsize*1.1,2*height/3 + 5);
+    canvas.lineTo(middle - hsize,2*height/3 + 10);
+    canvas.lineTo(middle - hsize,height);
 
     //bottom
-    canvas.quadraticCurveTo(70,200,130,180);
+    canvas.quadraticCurveTo(middle,height+20,middle + hsize,height);
 
-    canvas.lineTo(130,130);
-    canvas.lineTo(135,125);
-    canvas.lineTo(130,120);
-    canvas.lineTo(130,70);
-    canvas.lineTo(135,65);
-    canvas.lineTo(130,60);
-    canvas.lineTo(130,10);
+    canvas.lineTo(middle + hsize,130);
+    canvas.lineTo(middle + hsize*1.1,125);
+    canvas.lineTo(middle + hsize,120);
+    canvas.lineTo(middle + hsize,70);
+    canvas.lineTo(middle + hsize*1.1,65);
+    canvas.lineTo(middle + hsize,60);
+    canvas.lineTo(middle + hsize,10);
 
     //top
-    canvas.quadraticCurveTo(70,0,10,10);
+    canvas.quadraticCurveTo(middle,0,middle - hsize,10);
     canvas.closePath();
-    canvas.fillStyle = "#DDDDDD";
+    canvas.fillStyle = "#f2f2f2";
     canvas.fill();
     canvas.stroke();
 
     //cap
     canvas.beginPath();
-    canvas.strokeStyle = "#445046";
-    canvas.moveTo(50,15);
-    canvas.quadraticCurveTo(70,12,90,15);
+    canvas.strokeStyle = "#b4b4b4";
+    canvas.fillStyle = "#b4b4b4";
+    canvas.moveTo(middle - 30,17);
+    canvas.quadraticCurveTo(middle,12,middle + 30,17);
+    canvas.closePath();
     canvas.stroke();
+    canvas.fill();
 
     //draw beer
+
+    var bheight = 150;
     canvas.beginPath();
     canvas.fillStyle = "#FBB123";
-    canvas.moveTo(20,50);
-    canvas.lineTo(20,170);
-    canvas.quadraticCurveTo(70,190,120,170);
-    canvas.lineTo(120,50);
+
+    canvas.moveTo(middle - 50,170-bheight*level);
+    canvas.lineTo(middle - 50,170);
+    canvas.quadraticCurveTo(middle,185,middle + 50,170);
+    canvas.lineTo(middle + 50,170-bheight*level);
     canvas.closePath();
     canvas.fill();
-}
+
+    //draw shades
+    canvas.beginPath();
+    canvas.moveTo(middle - 30,10);
+    canvas.lineTo(middle - 30,187);
+
+    //bottom
+    canvas.quadraticCurveTo(middle + 10,195,middle + 60,180);
+
+    canvas.lineTo(middle + 60,130);
+    canvas.lineTo(middle + 65,125);
+    canvas.lineTo(middle + 60,120);
+    canvas.lineTo(middle + 60,70);
+    canvas.lineTo(middle + 65,65);
+    canvas.lineTo(middle + 60,60);
+    canvas.lineTo(middle + 60,10);
+
+    //top
+    canvas.quadraticCurveTo(middle,0,middle - 30,6);
+    canvas.closePath();
+    canvas.fillStyle = "rgba(230, 230, 230, 0.2)";
+    canvas.fill();
+
+    canvas.beginPath();
+    canvas.moveTo(middle + 30,10);
+    canvas.lineTo(middle + 30,187);
+
+    //bottom
+    canvas.quadraticCurveTo(middle + 10,195,middle + 60,180);
+
+    canvas.lineTo(middle + 60,130);
+    canvas.lineTo(middle + 65,125);
+    canvas.lineTo(middle + 60,120);
+    canvas.lineTo(middle + 60,70);
+    canvas.lineTo(middle + 65,65);
+    canvas.lineTo(middle + 60,60);
+    canvas.lineTo(middle + 60,10);
+
+    //top
+    canvas.quadraticCurveTo(middle + 10,0,middle + 40,6);
+    canvas.closePath();
+    canvas.fillStyle = "rgba(210, 210, 210, 0.2)";
+    canvas.fill();
+};
 
 
 $(document).ready(function() {
-   console.log("Page loaded");
 
     var b1canvas = document.getElementById("beer1").getContext("2d");
     var b2canvas = document.getElementById("beer2").getContext("2d");
 
-    drawKeg(b1canvas,1);
-    drawKeg(b2canvas,1);
+    //resize canvas
+    width = $(".beer").width();
+    height = $(".beer").height();
+
+    b1canvas.canvas.width = width;
+    b1canvas.canvas.height = width;
+    b2canvas.canvas.width = width;
+    b2canvas.canvas.height = width;
+
+
+    //drawKeg(b1canvas,.5);
+    keg.draw(b1canvas,.5, width);
+    keg.draw(b2canvas,1, width);
 
 
     //resize the canvas

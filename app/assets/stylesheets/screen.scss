@@ -4,5 +4,98 @@
 
 
 body {
-  background-color: #4D544E;
+  background-color: #f0e6d4;
+}
+
+.top-banner {
+  background-color: #f0dcb4;
+  margin-bottom: 20px;
+
+
+  .logo {
+    background-image: image-url('logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 220px;
+  }
+
+  .left-hop {
+    background-image: image-url('hop-left.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 220px;
+  }
+}
+
+.sidebar {
+  background-color: #f0dcb4;
+}
+
+.bottom-bar {
+  background-color: #f0dcb4;
+}
+
+
+.ribbon {
+  .rectangle {
+    background: #e5592e;
+    height: 62px;
+    position: relative;
+    -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    z-index: 500; /* the stack order: foreground */
+    margin: 3em 0;
+    top: -15px;
+  }
+
+  .l-triangle-top {
+    border-color: #d9542b transparent transparent;
+    border-style:solid;
+    border-width:50px;
+    height:0px;
+    width:0px;
+    position: relative;
+    float: left;
+    top: 1px;
+    left: -50px;
+  }
+
+  .l-triangle-bottom {
+    border-color: transparent transparent #d9542b;
+    border-style:solid;
+    border-width:50px;
+    height:0px;
+    width:0px;
+    position: relative;
+    float: left;
+    top: -40px;
+    left: -150px;
+  }
+
+  .r-triangle-top {
+    border-color: #d9542b transparent transparent;
+    border-style:solid;
+    border-width:50px;
+    height:0px;
+    width:0px;
+    position: relative;
+    float: right;
+    right: -45px;
+    top: -102px;
+  }
+
+  .r-triangle-bottom {
+    border-color: transparent transparent #d9542b;
+    border-style:solid;
+    border-width:50px;
+    height:0px;
+    width:0px;
+    position: relative;
+    float: right;
+    top: -145px;
+    right: -145px;
+  }
 }
