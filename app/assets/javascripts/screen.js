@@ -4,9 +4,13 @@ var keg = {};
 keg.draw = function(canvas, level, width) {
     //canvas.scale(2,2);
 
+    scale_f = (width/120);
+
     middle = width/2;
-    height = width - 30;
-    hsize = 60*(width/120) - 30;
+    height = width - 30*scale_f;
+
+
+    hsize = 60*(width/120) - 30*scale_f;
 
     //set style
     canvas.lineWidth=1;
@@ -15,28 +19,32 @@ keg.draw = function(canvas, level, width) {
     canvas.beginPath();
     canvas.moveTo(middle - hsize,10);
     canvas.lineTo(middle - hsize,height/3);
-    canvas.lineTo(middle - hsize*1.1,height/3 + 5);
-    canvas.lineTo(middle - hsize,height/3 + 10);
+    canvas.lineTo(middle - hsize*1.1,height/3 + 2*scale_f);
+    canvas.lineTo(middle - hsize,height/3 + 4*scale_f);
+
     canvas.lineTo(middle - hsize,2*height/3);
-    canvas.lineTo(middle - hsize*1.1,2*height/3 + 5);
-    canvas.lineTo(middle - hsize,2*height/3 + 10);
+    canvas.lineTo(middle - hsize*1.1,2*height/3 + 2*scale_f);
+    canvas.lineTo(middle - hsize,2*height/3 + 4*scale_f);
+
     canvas.lineTo(middle - hsize,height);
 
     //bottom
-    canvas.quadraticCurveTo(middle,height+20,middle + hsize,height);
+    canvas.quadraticCurveTo(middle,height+5*scale_f,middle + hsize,height);
 
-    canvas.lineTo(middle + hsize,130);
-    canvas.lineTo(middle + hsize*1.1,125);
-    canvas.lineTo(middle + hsize,120);
-    canvas.lineTo(middle + hsize,70);
-    canvas.lineTo(middle + hsize*1.1,65);
-    canvas.lineTo(middle + hsize,60);
+    canvas.lineTo(middle + hsize,2*height/3 + 4*scale_f);
+    canvas.lineTo(middle + hsize*1.1,2*height/3 + 2*scale_f);
+    canvas.lineTo(middle + hsize,2*height/3);
+
+
+    canvas.lineTo(middle + hsize,height/3 + 4*scale_f);
+    canvas.lineTo(middle + hsize*1.1,height/3 + 2*scale_f);
+    canvas.lineTo(middle + hsize,height/3);
     canvas.lineTo(middle + hsize,10);
 
     //top
     canvas.quadraticCurveTo(middle,0,middle - hsize,10);
     canvas.closePath();
-    canvas.fillStyle = "#f2f2f2";
+    canvas.fillStyle = "#a2a2a2";
     canvas.fill();
     canvas.stroke();
 
@@ -44,69 +52,124 @@ keg.draw = function(canvas, level, width) {
     canvas.beginPath();
     canvas.strokeStyle = "#b4b4b4";
     canvas.fillStyle = "#b4b4b4";
-    canvas.moveTo(middle - 30,17);
-    canvas.quadraticCurveTo(middle,12,middle + 30,17);
+    canvas.moveTo(middle - hsize/2,17);
+    canvas.quadraticCurveTo(middle,12,middle + hsize/2,17);
     canvas.closePath();
     canvas.stroke();
     canvas.fill();
 
     //draw beer
 
-    var bheight = 150;
+    var bheight = height/1.2;
     canvas.beginPath();
     canvas.fillStyle = "#FBB123";
 
-    canvas.moveTo(middle - 50,170-bheight*level);
-    canvas.lineTo(middle - 50,170);
-    canvas.quadraticCurveTo(middle,185,middle + 50,170);
-    canvas.lineTo(middle + 50,170-bheight*level);
+    canvas.moveTo(middle - hsize/1.1,height-bheight*level);
+
+    canvas.lineTo(middle - hsize/1.1,height - 4*scale_f);
+    canvas.quadraticCurveTo(middle,height,middle + hsize/1.1,height - 4*scale_f);
+    canvas.lineTo(middle + hsize/1.1,height-bheight*level);
     canvas.closePath();
     canvas.fill();
+
 
     //draw shades
     canvas.beginPath();
-    canvas.moveTo(middle - 30,10);
-    canvas.lineTo(middle - 30,187);
+    canvas.moveTo(middle - hsize/2,20);
+    canvas.lineTo(middle - hsize/2,height+2*scale_f);
 
     //bottom
-    canvas.quadraticCurveTo(middle + 10,195,middle + 60,180);
+    canvas.quadraticCurveTo(middle + 10*scale_f,height + 5*scale_f,middle + hsize,height);
 
-    canvas.lineTo(middle + 60,130);
-    canvas.lineTo(middle + 65,125);
-    canvas.lineTo(middle + 60,120);
-    canvas.lineTo(middle + 60,70);
-    canvas.lineTo(middle + 65,65);
-    canvas.lineTo(middle + 60,60);
-    canvas.lineTo(middle + 60,10);
+    canvas.lineTo(middle + hsize,2*height/3 + 4*scale_f);
+    canvas.lineTo(middle + hsize*1.1,2*height/3 + 2*scale_f);
+    canvas.lineTo(middle + hsize,2*height/3);
+
+
+    canvas.lineTo(middle + hsize,height/3 + 4*scale_f);
+    canvas.lineTo(middle + hsize*1.1,height/3 + 2*scale_f);
+    canvas.lineTo(middle + hsize,height/3);
+    canvas.lineTo(middle + hsize,10);
 
     //top
-    canvas.quadraticCurveTo(middle,0,middle - 30,6);
+    canvas.quadraticCurveTo(middle,0,middle - hsize/2,10-0.5*scale_f);
     canvas.closePath();
-    canvas.fillStyle = "rgba(230, 230, 230, 0.2)";
+    canvas.fillStyle = "rgba(230, 230, 230, 0.2)"; //0.2
     canvas.fill();
 
+
+
     canvas.beginPath();
-    canvas.moveTo(middle + 30,10);
-    canvas.lineTo(middle + 30,187);
+    canvas.moveTo(middle + hsize/2,20);
+    canvas.lineTo(middle + hsize/2,height+2*scale_f);
 
     //bottom
-    canvas.quadraticCurveTo(middle + 10,195,middle + 60,180);
+    canvas.quadraticCurveTo(middle+hsize/2+5*scale_f,height + 1.5*scale_f,middle + hsize,height);
 
-    canvas.lineTo(middle + 60,130);
-    canvas.lineTo(middle + 65,125);
-    canvas.lineTo(middle + 60,120);
-    canvas.lineTo(middle + 60,70);
-    canvas.lineTo(middle + 65,65);
-    canvas.lineTo(middle + 60,60);
-    canvas.lineTo(middle + 60,10);
+    canvas.lineTo(middle + hsize,2*height/3 + 4*scale_f);
+    canvas.lineTo(middle + hsize*1.1,2*height/3 + 2*scale_f);
+    canvas.lineTo(middle + hsize,2*height/3);
+
+
+    canvas.lineTo(middle + hsize,height/3 + 4*scale_f);
+    canvas.lineTo(middle + hsize*1.1,height/3 + 2*scale_f);
+    canvas.lineTo(middle + hsize,height/3);
+    canvas.lineTo(middle + hsize,10);
 
     //top
-    canvas.quadraticCurveTo(middle + 10,0,middle + 40,6);
+    canvas.quadraticCurveTo(middle+hsize/2+5*scale_f, 10-0.5*scale_f, middle + hsize/2, 10-1*scale_f);
     canvas.closePath();
     canvas.fillStyle = "rgba(210, 210, 210, 0.2)";
     canvas.fill();
 };
 
+keg.drawStatus = function(canvas, level, name, width) {
+
+    scale_f = (width/120);
+    height = width - 30*scale_f;
+
+    middle = width/2;
+
+    hsize = 60*(width/120) - 30*scale_f;
+
+    //ribbon
+    canvas.beginPath();
+    canvas.moveTo(40*scale_f, height + 9*scale_f);
+    canvas.lineTo(middle+hsize, height + 9*scale_f);
+    canvas.lineTo(middle+hsize - 4*scale_f, height + 18*scale_f);
+    canvas.lineTo(middle+hsize, height + 27*scale_f);
+    canvas.lineTo(40*scale_f, height + 27*scale_f);
+    canvas.closePath();
+    canvas.fillStyle = "#7B1C16";
+    canvas.strokeStyle = "#5F140F";
+    canvas.lineWidth = 3;
+
+    canvas.fill();
+    canvas.stroke();
+
+
+    canvas.beginPath();
+    canvas.arc(40*scale_f,height + 18*scale_f,10*scale_f,0,2*Math.PI);
+    canvas.fillStyle = "#B54028";
+    canvas.fill();
+
+    canvas.beginPath();
+    canvas.arc(40*scale_f,height + 18*scale_f,8*scale_f,0,2*Math.PI);
+    canvas.strokeStyle= "#FFFFFF";
+    canvas.lineWidth= 3;
+    canvas.stroke();
+
+    //%%
+    canvas.font = 5*scale_f+"px Arial";
+    canvas.fillStyle = "#FFF47D";
+    canvas.fillText(level*100 + "%",34*scale_f,height + 20*scale_f);
+
+    //title
+    canvas.font = 6*scale_f+"px Arial";
+    canvas.fillStyle = "#FFF47D";
+    canvas.fillText(name,52*scale_f,height + 20*scale_f);
+
+};
 
 $(document).ready(function() {
 
@@ -119,13 +182,17 @@ $(document).ready(function() {
 
     b1canvas.canvas.width = width;
     b1canvas.canvas.height = width;
+
     b2canvas.canvas.width = width;
     b2canvas.canvas.height = width;
 
 
     //drawKeg(b1canvas,.5);
     keg.draw(b1canvas,.5, width);
+    keg.drawStatus(b1canvas,.5,"Bud", width);
+
     keg.draw(b2canvas,1, width);
+    keg.drawStatus(b2canvas,1,"Baltika 9", width);
 
 
     //resize the canvas

@@ -25,6 +25,13 @@ body {
     background-position: right;
     height: 220px;
   }
+
+  .right-hop {
+    background-image: image-url('hop-right.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 220px;
+  }
 }
 
 .sidebar {
