@@ -1,15 +1,17 @@
 .col-md-9
   .row.top-banner
-    .col-xs-4.left-hop
-    .col-xs-4.logo
-    .col-xs-4.right-hop
+    .col-sm-4.left-hop.hidden-sx
+    .col-sm-4.logo
+    .col-sm-4.right-hop.hidden-sx
   .row
-    .col-xs-6.beer
+    .col-xs-4.beer
       %canvas{id: "beer1", width: "200", height: "200"}
-    .col-xs-6.beer
+    .col-xs-4.beer
       %canvas{id: "beer2", width: "200", height: "200"}
+    .col-xs-4.beer
+      %canvas{id: "beer3", width: "200", height: "200"}
   .row.bottom-bar
-    .col-sx-12
+    .col-sx-12.graph
       %canvas{id: "graph", width: "200", height: "200"}
 .col-md-3.sidebar
   .row

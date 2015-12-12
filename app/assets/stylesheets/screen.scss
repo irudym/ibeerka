@@ -7,6 +7,12 @@ body {
   background-color: #f0e6d4;
 }
 
+@font-face {
+  font-family: Blenda;
+  src: font-url('Blenda.otf') format('opentype');
+}
+
+
 .top-banner {
   background-color: #f0dcb4;
   margin-bottom: 20px;
@@ -20,17 +26,23 @@ body {
   }
 
   .left-hop {
-    background-image: image-url('hop-left.png');
+    background-image: image-url('hop-left2.png');
     background-repeat: no-repeat;
     background-position: right;
     height: 220px;
   }
 
   .right-hop {
-    background-image: image-url('hop-right.png');
+    background-image: image-url('hop-right2.png');
     background-repeat: no-repeat;
     background-position: left;
     height: 220px;
+  }
+}
+
+@media  (max-width: 800px) {
+  .hidden-sx {
+    display: none;
   }
 }
 
@@ -105,4 +117,8 @@ body {
     top: -145px;
     right: -145px;
   }
+}
+
+.graph {
+  padding: 10px;
 }
